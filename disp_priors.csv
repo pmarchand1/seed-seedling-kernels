@@ -1,0 +1,11 @@
+model,param,prior_mean,prior_sd
+2Dt,p_alpha,4,2
+2Dt,p_inv_k_real,0,1
+exppow,p_alpha,3,1
+exppow,p_inv_k,3,3
+invpow,p_alpha,3,1
+invpow,p_k_real,0,1
+lognorm,p_mu_disp,2,1
+lognorm,p_sd_disp,3,3
+weibull,p_alpha,2,1
+weibull,p_inv_k,3,3

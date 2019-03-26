@@ -1,0 +1,10 @@
+stage,param,prior_mean,prior_sd
+seed,p_mu_beta,4,3
+seed,p_sd_beta,0,2
+seed,p_ri_theta,0,5
+recruit,p_mu_beta,0,3
+recruit,p_sd_beta,0,2
+recruit,p_ri_theta,0,5
+seedling,p_mu_beta,-2,3
+seedling,p_sd_beta,0,2
+seedling,p_ri_theta,0,5
