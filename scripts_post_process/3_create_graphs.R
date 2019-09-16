@@ -12,9 +12,9 @@ stage_trans_order <- c("seed-to-recruit", "recruit-to-seedling")
 scale_colour_discrete <- function(...) scale_colour_brewer(palette = "Dark2", ...)
 scale_fill_discrete <- function(...) scale_fill_brewer(palette = "Dark2", ...)
 
-# Abbreviate species name by replacing genus with initial
+# Abbreviate species name as genus + 2 first letters of species
 abbr_genus <- function(sp_name) {
-    str_replace(sp_name, "(^[A-Z])[a-z]+", "\\1\\.")
+    paste0(str_extract(sp_name, "(^[A-z]+ [a-z][a-z])"), ".")
 }
 
 # Load additional species data --------------------------------------------
@@ -43,7 +43,7 @@ pdf("figures/post_kernel.pdf", width = 6, height = 7)
 ggplot(avg_disp) +
     geom_line(aes(x = r, y = med, color = stage)) +
     geom_ribbon(aes(x = r, ymin = lo95, ymax = hi95, fill = stage), alpha = 0.3) +
-    labs(x = "r (m)", y = expression("Probability density" * (1/m^2)), 
+    labs(x = "Distance (m)", y = expression("Estimated dispersal kernel" * (1/m^2)), 
          color = "", fill = "") +
     scale_y_log10(breaks = 10^(seq(-5, -1, 2))) +
     coord_cartesian(ylim = c(max(min(avg_disp$lo95), 1E-6), max(avg_disp$hi95)),
@@ -71,7 +71,7 @@ ggplot(surv_df, aes(x = r)) +
     geom_hline(yintercept = 1, linetype = "dashed") +
     geom_line(aes(y = med, color = stage)) +
     geom_ribbon(aes(x = r, ymin = lo50, ymax = hi50, fill = stage), alpha = 0.3) +
-    labs(x = "r (m)", y = "Relative survival", color = "", fill = "") +
+    labs(x = "Distance (m)", y = "Relative survival", color = "", fill = "") +
     scale_x_log10(breaks = c(1, 3, 10, 30, 100)) +
     scale_y_log10() +
     facet_wrap(~ species, ncol = 4, scales = "free_y") +
